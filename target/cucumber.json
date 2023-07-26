@@ -1,0 +1,127 @@
+[
+  {
+    "line": 3,
+    "elements": [
+      {
+        "start_timestamp": "2023-07-26T16:44:11.245Z",
+        "line": 5,
+        "name": "The user find a word in google and check the result in a wikipedia page",
+        "description": "",
+        "id": "the-user-find-a-word-in-google-and-check-the-result-in-a-wikipedia-page;the-user-find-a-word-in-google-and-check-the-result-in-a-wikipedia-page",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 6912572000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "The next URL: \"https://www.google.com\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"https://www.google.com\"",
+                  "offset": 14
+                }
+              ],
+              "location": "Steps.GoogleSteps.loadUrl(java.lang.String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 9839886000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "The user find \"automatización\" in the search",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"automatización\"",
+                  "offset": 14
+                }
+              ],
+              "location": "Steps.GoogleSteps.findWordGoogle(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 27602007000,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "select the wikipedia Link",
+            "match": {
+              "location": "Steps.GoogleSteps.selectWikipediaLink()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 309583000,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "The system displays the first automation in the \"1785\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"1785\"",
+                  "offset": 48
+                }
+              ],
+              "location": "Steps.WikipediaSteps.checkDateAutomation(java.lang.String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 526286000,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "take a screenshot",
+            "match": {
+              "location": "Steps.WikipediaSteps.takeScreenshot()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Automation"
+          },
+          {
+            "name": "@Google"
+          }
+        ]
+      }
+    ],
+    "name": "The user find a word in google and check the result in a wikipedia page",
+    "description": "",
+    "id": "the-user-find-a-word-in-google-and-check-the-result-in-a-wikipedia-page",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/Auto.feature",
+    "tags": [
+      {
+        "name": "@Automation",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      },
+      {
+        "name": "@Google",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    ]
+  }
+]
