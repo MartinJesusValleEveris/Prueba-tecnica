@@ -1,6 +1,8 @@
-Steps/GoogleSteps.class
-runner/TestRunner.class
+Steps\WikipediaSteps.class
+actions\Google.class
 Main.class
-Steps/WikipediaSteps.class
-actions/Wikipedia.class
-actions/Google.class
+Api1.class
+actions\Wikipedia.class
+Steps\GoogleSteps.class
+runner\TestRunner.class
+Api2.class
