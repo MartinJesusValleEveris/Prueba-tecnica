@@ -1,3 +1,4 @@
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -16,7 +17,6 @@ public class Api2 {
         // Esto es lo que vamos a devolver
         StringBuilder resultado = new StringBuilder();
         // Crear un objeto de tipo URL
-        //String url = "https://petstore.swagger.io/v2/user/juan";
         URL url = new URL("https://petstore.swagger.io/v2/pet/findByStatus?status=" + estado);
 
 
@@ -34,20 +34,13 @@ public class Api2 {
             // Cerrar el BufferedReader
             rd.close();
             // Regresar resultado, pero como cadena, no como StringBuilder
-            // return resultado.toString();
-            //      JSONObject jsonobject= new JSONObject(resultado.toString());
-            //    System.out.println("json object "+jsonobject);
-            System.out.println("La respuesta es:\n" + resultado.toString());
-/*          JSONParser parser = new JSONParser();
-          FileReader reader = new FileReader("C:\\Users\\kevin\\Desktop\\LeerMenu\\Menu.json");
-          Object obj = parser.parse(reader);
-          JSONObject pJsonObj = (JSONObject)obj;
-          JSONArray array = (JSONArray)pJsonObj.get("PlatoFuerte");*/
-
+            JSONArray jsonArray = new JSONArray(resultado.toString());
+            for(int i=0;i<jsonArray.length();i++){
+                System.out.println("id: "+jsonArray.getJSONObject(i).get("id")+" and name:"+jsonArray.getJSONObject(i).get("name"));
+            }
         } catch (Exception e) {
             // Manejar excepción
             e.printStackTrace();
         }
     }
-
 }
