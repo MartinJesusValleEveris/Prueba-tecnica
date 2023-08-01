@@ -6,8 +6,8 @@ import java.net.URL;
 
 public class Api1 {
     public static void main(String[] args) throws Exception {
-        peticionHTTPPost("arnau");
-        peticionHttpGet("arnau");
+        peticionHTTPPost("Nami");
+        peticionHttpGet("Nami");
     }
 
 
