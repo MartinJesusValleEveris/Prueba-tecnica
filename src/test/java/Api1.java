@@ -32,9 +32,9 @@ public class Api1 {
         }
         // Cerrar el BufferedReader
         rd.close();
-        // Regresar resultado, pero como cadena, no como StringBuilder
-       // return resultado.toString();
-        System.out.println("La respuesta es:\n" + resultado.toString());
+
+        //Pintamos el resultado del get
+        System.out.println("La respuesta es: " + resultado.toString());
     } catch (Exception e) {
         // Manejar excepción
         e.printStackTrace();
@@ -42,6 +42,7 @@ public class Api1 {
     }
 
     public static void peticionHTTPPost(String userName) throws Exception {
+        //Montamos el body
         String body = "{\n" +
                 "  \"id\": 4,\n" +
                 "  \"username\": \""+userName+"\",\n" +
@@ -63,6 +64,7 @@ public class Api1 {
             dos.writeBytes(body);
         }
 
+        //pintamos la respuesta del post
         System.out.println("Response code: " + con.getResponseCode());
 
         //Read Response from and API

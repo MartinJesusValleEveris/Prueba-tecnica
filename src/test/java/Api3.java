@@ -15,7 +15,6 @@ public class Api3 {
         printResultado();
     }
 
-
     public static void peticionHttpGet(String estado) throws Exception {
         // Esto es lo que vamos a devolver
         StringBuilder resultado = new StringBuilder();
@@ -35,8 +34,10 @@ public class Api3 {
             }
             // Cerrar el BufferedReader
             rd.close();
-            // Regresar resultado, pero como cadena, no como StringBuilder
+
+            //pasamos el resultado a un objeto jsonArray para poder tratarlo mejor
             JSONArray jsonArray = new JSONArray(resultado.toString());
+            //pasamos el objeto jsonArray a la clase animalesVendidos para poderlo tratar en otra funcion
             animalesVendidos.setJsonArray(jsonArray);
         } catch (Exception e) {
             // Manejar excepción
@@ -46,45 +47,47 @@ public class Api3 {
 
     public static void printResultado() {
         int i;
+        //Creamos una lista de nombres que ya hemos contado
         ArrayList<String> names = new ArrayList<>();
+
         //por cada mascota vendida
         for (i = 0; i < animalesVendidos.getJsonArray().length(); i++) {
-            boolean animalRepetido=false;
+            boolean animalRepetido = false;
             int repeticiones = 0;
-
+            //Si no existen nombres en la lista ejecuta esta parte del codigo
             if (names.size() == 0) {
+                //a partir de la posicion actual (i) cogemos el nombre, y lo comparamos con el resto de nombres (z)
                 for (int z = i; z < animalesVendidos.getJsonArray().length(); z++) {
+                    //Si el nombre coincide le sumamos 1 repeticion
                     if (animalesVendidos.getJsonArray().getJSONObject(i).get("name").equals(animalesVendidos.getJsonArray().getJSONObject(z).get("name"))) {
                         repeticiones++;
                     }
                 }
+                //Al final pintamos la posicion del nombre (i) y las repeticiones, y añadimmos el nombre a la lista
                 System.out.println(animalesVendidos.getJsonArray().getJSONObject(i).get("name") + " : " + repeticiones);
                 names.add(animalesVendidos.getJsonArray().getJSONObject(i).get("name").toString());
             } else {
-                //Por cada posicion en la lista
+                //Por cada posicion en la lista comparamos con el nombre actual
+                //Si coincide el nombre con alguno de la lista, pasamos a true, y no ejecutamos el codigo de contar
                 for (int m = 0; m < names.size(); m++) {
                     if (names.get(m).equals(animalesVendidos.getJsonArray().getJSONObject(i).get("name"))) {
                         animalRepetido = true;
                     }
                 }
-                if(animalRepetido==false){
+                //En el caso de que el nombre no este en la lista, ejecutamos el mismo codigo que la primera vez
+                if (animalRepetido == false) {
                     for (int z = i; z < animalesVendidos.getJsonArray().length(); z++) {
                         if (animalesVendidos.getJsonArray().getJSONObject(i).get("name").equals(animalesVendidos.getJsonArray().getJSONObject(z).get("name"))) {
-                                repeticiones++;
+                            repeticiones++;
                         }
                     }
                     names.add(animalesVendidos.getJsonArray().getJSONObject(i).get("name").toString());
                     System.out.println(animalesVendidos.getJsonArray().getJSONObject(i).get("name") + " : " + repeticiones);
-
                 }
-                        //Puede llamarse doggie, y el primer caso no se llame doggie,
-                        // y el tercero si(entonces entrara, aunque ya haya otro King kong
-
-
             }
-
         }
+        //Para asegurar que sale correctamente, pintamos cada nombre de la lista, y el total de animales vendidos y el tamaño de la array
         System.out.println("names " + names.size() + " lista " + names);
-        System.out.println("Total Pets: " + i +" total length"+animalesVendidos.getJsonArray().length());
+        System.out.println("Total Pets: " + i + " total length: " + animalesVendidos.getJsonArray().length());
     }
 }

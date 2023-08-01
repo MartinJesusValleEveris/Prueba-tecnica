@@ -1,5 +1,4 @@
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,7 +10,6 @@ public class Api2 {
     public static void main(String[] args) throws Exception {
         peticionHttpGet("sold");
     }
-
 
     public static void peticionHttpGet(String estado) throws Exception {
         // Esto es lo que vamos a devolver
@@ -33,8 +31,11 @@ public class Api2 {
             }
             // Cerrar el BufferedReader
             rd.close();
-            // Regresar resultado, pero como cadena, no como StringBuilder
+
+            //pasamos el resultado a un objeto jsonArray para poder tratarlo mejor
             JSONArray jsonArray = new JSONArray(resultado.toString());
+
+            //Recorremos el array con un for, y por cada elemento, pintamos el id y el nombre
             for(int i=0;i<jsonArray.length();i++){
                 System.out.println("id: "+jsonArray.getJSONObject(i).get("id")+" and name:"+jsonArray.getJSONObject(i).get("name"));
             }

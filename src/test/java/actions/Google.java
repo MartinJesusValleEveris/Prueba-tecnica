@@ -12,7 +12,6 @@ public class Google {
 
     public void openUrl(String  url){
         TestRunner.driver.get(url);
-        //Define element accept button cookies
         WebElement btnBack = TestRunner.driver.findElement(By.xpath("//button[@id='L2AGLb']"));
         btnBack.click();
     }
